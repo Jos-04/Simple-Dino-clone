@@ -1,5 +1,18 @@
 const dino = document.getElementById("dino");
-const cacto =document.getElementById("cacto");
+const cactosTipo = ['cacto0', 'cacto1', 'cacto2', 'cacto3'];
+
+
+setInterval(function escolhaCacto(){
+    let cactoId = Math.floor(Math.random()*cactosTipo.length);
+    let cactoEscolhido = cactosTipo[cactoId];
+    let cacto = document.getElementById(`${cactoEscolhido}`);
+    cacto.style.backgroundImage = `url('${cactoEscolhido}.png')`;
+
+    setTimeout(function(){
+       cacto.style.backgroundImage = "none"; 
+    }, 1000);
+}, 1000);
+
 
 function pulo(){
     if(dino.classList!="pulo"){
@@ -24,7 +37,7 @@ let estado = setInterval(function(){
         cacto.style.animation = "none";
         cacto.style.display = "none";
     }
-}, 10)
+}, 10);
 
 document.addEventListener("keydown", function (event) {
   if(event.code === "ArrowUp" || event.code === "Space"){
