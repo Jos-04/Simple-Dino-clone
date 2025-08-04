@@ -1,17 +1,37 @@
 const dino = document.getElementById("dino");
-const cactosTipo = ['cacto0', 'cacto1', 'cacto2', 'cacto3'];
+const cactosTipo = ['cacto0', 'cacto1', 'cacto2'];
 
 
-setInterval(function escolhaCacto(){
+function escolhaCacto(){
+    //sorteia um tipo de cacto para ser gerado
     let cactoId = Math.floor(Math.random()*cactosTipo.length);
     let cactoEscolhido = cactosTipo[cactoId];
     let cacto = document.getElementById(`${cactoEscolhido}`);
     cacto.style.backgroundImage = `url('${cactoEscolhido}.png')`;
 
+    //Detectção de hit
+    let estado = setInterval(function(){
+        let dinotop = parseInt(window.getComputedStyle(dino).getPropertyValue("top"));
+        let cactoleft = parseInt(window.getComputedStyle(cacto).getPropertyValue("left"));
+
+        if(cactoleft<50 && cactoleft>0 && dinotop>120){
+            alert("Perdeu");
+
+            //Cancela a animação e o display do cacto
+            //cacto.style.animation = "none";
+            //cacto.style.display = "none";
+        }
+    }, 10);
+
+    //Serve para chamar a função novamente após 1 segundo, que é o que dura a animação
     setTimeout(function(){
-       cacto.style.backgroundImage = "none"; 
+       cacto.style.backgroundImage = "none";
+
+       escolhaCacto();
     }, 1000);
-}, 1000);
+}
+
+escolhaCacto();
 
 
 function pulo(){
@@ -25,19 +45,6 @@ function pulo(){
     }
 }
 
-//Detectção de hit
-let estado = setInterval(function(){
-    let dinotop = parseInt(window.getComputedStyle(dino).getPropertyValue("top"));
-    let cactoleft = parseInt(window.getComputedStyle(cacto).getPropertyValue("left"));
-
-    if(cactoleft<50 && cactoleft>0 && dinotop>120){
-        alert("Perdeu");
-
-        //Cancela a animação e o display do cacto
-        cacto.style.animation = "none";
-        cacto.style.display = "none";
-    }
-}, 10);
 
 document.addEventListener("keydown", function (event) {
   if(event.code === "ArrowUp" || event.code === "Space"){
