@@ -16,10 +16,6 @@ function escolhaCacto(){
 
         if(cactoleft<50 && cactoleft>0 && dinotop>120){
             alert("Perdeu");
-
-            //Cancela a animação e o display do cacto
-            //cacto.style.animation = "none";
-            //cacto.style.display = "none";
         }
     }, 10);
 
