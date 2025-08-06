@@ -50,7 +50,6 @@
 
     /*background-image: url(cacto0.png);*/
     background-size: 30px 50px;
-    animation: cacto 1s infinite linear; 
 }
 
 #cacto1{
@@ -61,8 +60,7 @@
     left: 770px;
 
     /*background-image: url(cacto1.png);*/
-    background-size: 30px 50px; 
-    animation: cacto 1s infinite linear;
+    background-size: 30px 50px;
 }
 
 #cacto2{
@@ -74,12 +72,10 @@
 
     /*background-image: url(cacto3.png);*/
     background-size: 50px 50px;
-    animation: cacto 1s infinite linear;
-
 }
 
 .cacto{
-   animation: cacto 1s infinite linear; 
+   animation: cacto 1s infinite linear;
 }
 
 @keyframes cacto {
