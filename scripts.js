@@ -15,6 +15,7 @@ document.addEventListener("keydown", function (event) {
     });
 
 function escolhaCacto(){
+        console.log("cheguei");
         //sorteia um tipo de cacto para ser gerado
         let cactoId = Math.floor(Math.random()*cactosTipo.length);
         let cactoEscolhido = cactosTipo[cactoId];
@@ -49,9 +50,8 @@ function pulo(){
 
 function reiniciar(){
     dino.style.backgroundImage = 'url("dino0.png")';
-    vivo = true;
     cacto.style.backgroundImage = "none";
-    cacto.style.animationPlayState = "running";
+    vivo = true;
     escolhaCacto();
 }
 
@@ -63,7 +63,8 @@ function detecção_de_hit(cacto){
         if(cactoleft<50 && cactoleft>0 && dinotop>120){
             vivo = false;
             dino.style.backgroundImage = 'url("dino-dead0.png")';
-            cacto.style.animationPlayState = "paused";
+            cacto.classList.remove("cacto");
+            cacto.style.left = (`${cactoleft}px`);
             clearInterval(estado);
         }
     }, 10);
